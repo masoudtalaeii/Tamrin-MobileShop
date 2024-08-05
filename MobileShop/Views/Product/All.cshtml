@@ -1,0 +1,269 @@
+﻿@model List<BE.Product> 
+
+
+
+
+<main class="pt-20 md:pt-40 lg:pt-[73px]">
+      <div class="my-8 lg:my-10 py-5 lg:px-10 flex flex-col md:flex-row gap-5 p-3 md:p-5">
+        <div class="md:w-4/12 lg:w-3/12">
+          <div class="mb-4 rounded-2xl bg-white border">
+            <div class="flex flex-col overflow-y-auto overflow-x-hidden p-4">
+              <div>
+                <!-- title -->
+                <div class="mb-6 flex items-center justify-between">
+                  <h3 class="text-zinc-700 font-semibold text-lg">
+                    فیلتر ها
+                  </h3>
+                  <button class="py-2 text-sm text-red-400 hover:text-red-500 transition">
+                    حذف همه
+                  </button>
+                </div>
+                <ul class="space-y-2">
+                  <!-- category -->
+                  <li>
+                    <details class="group border rounded-md">
+                      <summary class="flex cursor-pointer items-center justify-between rounded-lg py-4 px-2 text-zinc-700">
+                        <span class="font-semibold"> دسته بندی </span>
+                        <span class="shrink-0 transition duration-200 group-open:-rotate-90">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000000" viewBox="0 0 256 256"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path></svg>
+                        </span>
+                      </summary>
+                      <div class="mt-2 max-h-60 overflow-y-auto px-2 pb-2">
+                        <ul class="space-y-2 rounded-lg">
+                          <li>
+                            <div class="flex w-full items-center gap-x-2 pr-4 bg-gray-50 rounded-md">
+                              <input id="c1" type="checkbox" value="" class="h-4 w-4 cursor-pointer rounded-xl border-gray-300 bg-gray-100">
+                              <label for="c1" class="w-full cursor-pointer py-2 pl-4 text-zinc-600">
+                                <span>
+                                  کالای دیجیتال
+                                </span>
+                              </label>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="flex w-full items-center gap-x-2 pr-4 bg-gray-50 rounded-md">
+                              <input id="c2" type="checkbox" value="" class="h-4 w-4 cursor-pointer rounded-xl border-gray-300 bg-gray-100">
+                              <label for="c2" class="w-full cursor-pointer py-2 pl-4 text-zinc-600">
+                                <span>
+                                  لوازم خانگی
+                                </span>
+                              </label>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="flex w-full items-center gap-x-2 pr-4 bg-gray-50 rounded-md">
+                              <input id="c3" type="checkbox" value="" class="h-4 w-4 cursor-pointer rounded-xl border-gray-300 bg-gray-100">
+                              <label for="c3" class="w-full cursor-pointer py-2 pl-4 text-zinc-600">
+                                <span>
+                                  موبایل
+                                </span>
+                              </label>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </details>
+                  </li>
+                  <!-- brand -->
+                  <li>
+                    <details class="group border rounded-md">
+                      <summary class="flex cursor-pointer items-center justify-between rounded-lg py-4 px-2 text-zinc-700">
+                        <span class="font-semibold"> برند </span>
+                        <span class="shrink-0 transition duration-200 group-open:-rotate-90">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000000" viewBox="0 0 256 256"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path></svg>
+                        </span>
+                      </summary>
+                      <div class="mt-2 max-h-60 overflow-y-auto px-2 pb-2">
+                        <ul class="space-y-2 rounded-lg" id="brandListFilterDesktop">
+                          <li class="p-2 relative">
+                            <input id="brandListFilterDesktopSearchInput" class="w-full pr-10 rounded-lg border border-none bg-gray-100 px-7 py-3 text-zinc-600 outline-none placeholder:text-sm placeholder:text-zinc-500 focus:ring-0" placeholder="جستجوی برند ..." type="text">
+                            <svg class="absolute top-6 right-4 fill-zinc-600" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="" viewBox="0 0 256 256"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"></path></svg>
+                          </li>
+                          <li>
+                            <div class="flex w-full items-center gap-x-2 pr-4 bg-gray-50 rounded-md">
+                              <input id="brand-nike" type="checkbox" value="" class="h-4 w-4 cursor-pointer rounded-xl border-gray-300 bg-gray-100">
+                              <label for="brand-nike" class="flex w-full cursor-pointer items-center justify-between py-2 pl-4 font-medium text-zinc-600">
+                                <span>نایک</span>
+                                <span>nike</span>
+                              </label>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="flex w-full items-center gap-x-2 pr-4 bg-gray-50 rounded-md">
+                              <input id="brand-adidas" type="checkbox" value="" class="h-4 w-4 cursor-pointer rounded-xl border-gray-300 bg-gray-100">
+                              <label for="brand-adidas" class="flex w-full cursor-pointer items-center justify-between py-2 pl-4 font-medium text-zinc-600">
+                                <span>آدیداس</span>
+                                <span>adidas</span>
+                              </label>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </details>
+                  </li>
+                  <!-- type seller -->
+                  <li>
+                    <details class="group border rounded-md">
+                      <summary class="flex cursor-pointer items-center justify-between rounded-lg py-4 px-2 text-zinc-700">
+                        <span class="font-semibold"> نوع فروشنده </span>
+                        <span class="shrink-0 transition duration-200 group-open:-rotate-90">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#000000" viewBox="0 0 256 256"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"></path></svg>
+                        </span>
+                      </summary>
+                      <div class="mt-2 max-h-60 overflow-y-auto px-2 pb-2">
+                        <ul class="space-y-2 rounded-lg" id="colorListFilterDesktop">
+                          <li>
+                            <div class="flex w-full items-center gap-x-2 pr-4">
+                              <input id="color-red" type="checkbox" value="" class="h-4 w-4 cursor-pointer rounded-xl border-gray-300 bg-gray-100">
+                              <label for="color-red" class="flex w-full cursor-pointer items-center py-2 pl-4 font-medium text-zinc-600">
+                                <span>مدکالا</span>
+                              </label>
+                            </div>
+                          </li>
+                          <li>
+                            <div class="flex w-full items-center gap-x-2 pr-4">
+                              <input id="color-blue" type="checkbox" value="" class="h-4 w-4 cursor-pointer rounded-xl border-gray-300 bg-gray-100">
+                              <label for="color-blue" class="flex w-full cursor-pointer items-center py-2 pl-4 font-medium text-zinc-600">
+                                <span>فروشنده رسمی</span>
+                              </label>
+                            </div>
+                          </li>
+                        </ul>
+                      </div>
+                    </details>
+                  </li>
+                  <!-- available -->
+                  <li>
+                    <label class="flex cursor-pointer items-center justify-between py-5 px-2" for="onlyAvailableDesktop">
+                      <div class="text-zinc-700 dark:text-white font-semibold">
+                        فقط کالا های موجود
+                      </div>
+                      <div class="relative inline-flex cursor-pointer items-center">
+                        <input class="peer sr-only" id="onlyAvailableDesktop" type="checkbox">
+                        <div class="peer h-6 w-11 rounded-full bg-gray-200 after:absolute after:left-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-blue-400 peer-checked:after:translate-x-full peer-focus:ring-blue-400"></div>
+                      </div>
+                    </label>
+                  </li>
+                  <!-- special -->
+                  <li>
+                    <label class="flex cursor-pointer items-center justify-between pt-5 px-2" for="onlySpecialDesktop">
+                      <div class="text-zinc-700 dark:text-white font-semibold">
+                       فقط محصولات موجود در انبار
+                      </div>
+                      <div class="relative inline-flex cursor-pointer items-center">
+                        <input class="peer sr-only" id="onlySpecialDesktop" type="checkbox">
+                        <div class="peer h-6 w-11 rounded-full bg-gray-200 after:absolute after:left-[2px] after:top-0.5 after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-blue-400 peer-checked:after:translate-x-full peer-focus:ring-blue-400"></div>
+                      </div>
+                    </label>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="md:w-8/12 lg:w-9/12">
+          <!-- filter -->
+          <div class="bg-white border rounded-2xl grid place-items-start p-5">
+            <div class="flex flex-wrap gap-5 justify-start items-center">
+                  <div class="text-zinc-600 font-semibold">
+                    مرتب سازی:
+                  </div>
+                  <div class="hover:text-red-500 transition text-sm cursor-pointer text-red-500">
+                    محبوب ترین
+                  </div>
+                  <div class="text-zinc-500 hover:text-red-400 transition text-sm cursor-pointer">
+                    پرفروش ترین
+                  </div>
+                  <div class="text-zinc-500 hover:text-red-400 transition text-sm cursor-pointer">
+                    ارزان ترین
+                  </div>
+                  <div class="text-zinc-500 hover:text-red-400 transition text-sm cursor-pointer">
+                    گران ترین
+                  </div>
+                  <div class="text-zinc-500 hover:text-red-400 transition text-sm cursor-pointer">
+                    جدیدترین
+                  </div>
+                  <div class="text-zinc-500 hover:text-red-400 transition text-sm cursor-pointer">
+                    پربازدیدترین
+                  </div>
+            </div>
+          </div>
+          <!-- products -->
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-5">
+
+                @foreach(var item in Model)
+                {
+                    <a href="./single-product.html" class="bg-white rounded-xl border hover:drop-shadow-md transition px-4 py-4 relative flex md:flex-col">
+                        <div class="bg-blue-500 rounded-full p-2 text-white flex items-center gap-x-1 text-xs absolute top-2 right-2">
+                            10%
+                        </div>
+                       
+                        <img class="mx-auto w-5/12 md:w-full" src="/Images/Product/@item.pic" alt="">
+
+                        
+
+                        <div class="flex flex-col justify-between">
+                            <div class="text-zinc-600">
+                                @item.Name
+
+                            </div>
+                            <div class="flex justify-between items-center mt-5">
+                                <div class="flex items-start justify-end gap-x-1 text-xs text-zinc-500">
+                                    <span>
+                                        4.8
+                                    </span>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" fill="#f9bc00" viewBox="0 0 256 256"><path d="M234.5,114.38l-45.1,39.36,13.51,58.6a16,16,0,0,1-23.84,17.34l-51.11-31-51,31a16,16,0,0,1-23.84-17.34L66.61,153.8,21.5,114.38a16,16,0,0,1,9.11-28.06l59.46-5.15,23.21-55.36a15.95,15.95,0,0,1,29.44,0h0L166,81.17l59.44,5.15a16,16,0,0,1,9.11,28.06Z"></path></svg>
+                                </div>
+                                <div class="flex justify-center gap-x-1 text-sm text-zinc-700">
+                                    <div>@item.Price</div>
+                                    <div>تومان</div>
+                                 
+                                </div>
+                                <a asp-controller="Home" asp-action="Details" asp-route-id="@item.ProductId" class="flex items-center justify-center gap-x-1 text-sm w-full py-2 px-2 rounded-lg text-white bg-blue-500 hover:bg-blue-400 transition">
+                                    خرید محصول
+                                </a>
+                            </div>
+                          
+                        </div>
+                    </a>
+                   
+                }
+
+          
+          </div>
+          <div class="mt-8">
+            <ul class="flex items-center justify-center gap-x-2 md:gap-x-3 h-8 text-sm">
+              <li>
+                <a href="#" class="flex items-center justify-center transition shadow-lg px-3 h-8 ms-0 text-gray-500 bg-white rounded-lg hover:bg-blue-100 hover:text-blue-400">
+                  <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"></path>
+                  </svg>
+                </a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center justify-center transition shadow-lg px-3 h-8 text-blue-500 bg-blue-200 rounded-lg hover:bg-blue-100">1</a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center justify-center transition shadow-lg px-3 h-8 text-gray-500 bg-white rounded-lg hover:bg-blue-100 hover:text-blue-400">2</a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center justify-center transition shadow-lg px-3 h-8 rounded-lg text-gray-500 bg-white  hover:bg-blue-100 hover:text-blue-400">3</a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center justify-center transition shadow-lg px-3 h-8 text-gray-500 bg-white rounded-lg  hover:bg-blue-100 hover:text-blue-400">...</a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center justify-center transition shadow-lg px-3 h-8 text-gray-500 bg-white rounded-lg  hover:bg-blue-100 hover:text-blue-400">8</a>
+              </li>
+              <li>
+                <a href="#" class="flex items-center justify-center transition shadow-lg px-3 h-8 text-gray-500 bg-white rounded-lg  hover:bg-blue-100 hover:text-blue-400">
+                  <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"></path>
+                  </svg>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  </main>

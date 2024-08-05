@@ -1,0 +1,55 @@
+﻿@model BE.User
+
+
+
+<div>
+    <!-- inputs -->
+    <form asp-area="Admin" asp-controller="Users" asp-action="Create" method="post">
+        <div class="sm:flex gap-x-5 mt-5">
+            <div class="sm:w-1/2 mb-2 sm:mb-0 flex flex-col gap-y-1">
+                <label class="text-sm text-zinc-700 flex">
+                    نام
+                    <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M210.23,101.57l-72.6,29,51.11,65.71a6,6,0,0,1-9.48,7.36L128,137.77,76.74,203.68a6,6,0,1,1-9.48-7.36l51.11-65.71-72.6-29a6,6,0,1,1,4.46-11.14L122,119.14V40a6,6,0,0,1,12,0v79.14l71.77-28.71a6,6,0,1,1,4.46,11.14Z"></path></svg>
+                </label>
+                <input asp-for="Name" class="focus:shadow-primary-outline text-sm leading-5.6 block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all focus:border-blue-300 focus:outline-none">
+            </div>
+            <div class="sm:w-1/2 flex flex-col gap-y-1">
+                <label class="text-sm text-zinc-700 flex">
+                    فامیلی
+                    <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M210.23,101.57l-72.6,29,51.11,65.71a6,6,0,0,1-9.48,7.36L128,137.77,76.74,203.68a6,6,0,1,1-9.48-7.36l51.11-65.71-72.6-29a6,6,0,1,1,4.46-11.14L122,119.14V40a6,6,0,0,1,12,0v79.14l71.77-28.71a6,6,0,1,1,4.46,11.14Z"></path></svg>
+                </label>
+                <input type="text" asp-for="Family" class="focus:shadow-primary-outline text-sm leading-5.6 block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all focus:border-blue-300 focus:outline-none">
+            </div>
+        </div>
+        <div class="sm:flex gap-x-5 mt-5">
+            <div class="sm:w-1/2 mb-2 sm:mb-0 flex flex-col gap-y-1">
+                <label class="text-sm text-zinc-700 flex">
+                    یوزرنیم
+                    <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M210.23,101.57l-72.6,29,51.11,65.71a6,6,0,0,1-9.48,7.36L128,137.77,76.74,203.68a6,6,0,1,1-9.48-7.36l51.11-65.71-72.6-29a6,6,0,1,1,4.46-11.14L122,119.14V40a6,6,0,0,1,12,0v79.14l71.77-28.71a6,6,0,1,1,4.46,11.14Z"></path></svg>
+                </label>
+                <input asp-for="UserName" class="focus:shadow-primary-outline text-sm leading-5.6 block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all focus:border-blue-300 focus:outline-none">
+            </div>
+            <div class="sm:w-1/2 flex flex-col gap-y-1">
+                <label class="text-sm text-zinc-700 flex">
+                    پسورد
+                    <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M210.23,101.57l-72.6,29,51.11,65.71a6,6,0,0,1-9.48,7.36L128,137.77,76.74,203.68a6,6,0,1,1-9.48-7.36l51.11-65.71-72.6-29a6,6,0,1,1,4.46-11.14L122,119.14V40a6,6,0,0,1,12,0v79.14l71.77-28.71a6,6,0,1,1,4.46,11.14Z"></path></svg>
+                </label>
+                <input type="text" asp-for="Password" class="focus:shadow-primary-outline text-sm leading-5.6 block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all focus:border-blue-300 focus:outline-none">
+            </div>
+        </div>
+        <div class="sm:flex gap-x-5 mt-5">
+            <div class="sm:w-1/2 mb-2 sm:mb-0 flex flex-col gap-y-1">
+                <label class="text-sm text-zinc-700 flex">
+                    تعداد
+                    <svg class="fill-red-500" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="#4d4d4d" viewBox="0 0 256 256"><path d="M210.23,101.57l-72.6,29,51.11,65.71a6,6,0,0,1-9.48,7.36L128,137.77,76.74,203.68a6,6,0,1,1-9.48-7.36l51.11-65.71-72.6-29a6,6,0,1,1,4.46-11.14L122,119.14V40a6,6,0,0,1,12,0v79.14l71.77-28.71a6,6,0,1,1,4.46,11.14Z"></path></svg>
+                </label>
+@*                 <input type="number" asp-for="QuantityinStock" class="focus:shadow-primary-outline text-sm leading-5.6 block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all focus:border-blue-300 focus:outline-none"> *@
+            </div>
+
+        </div>
+
+        <button type="submit" class="mx-auto w-1/3 px-2 py-3 mt-8 text-sm bg-blue-500 hover:bg-blue-400 transition text-gray-100 rounded-lg">
+            ثبت اطلاعات
+        </button>
+    </form>
+</div>

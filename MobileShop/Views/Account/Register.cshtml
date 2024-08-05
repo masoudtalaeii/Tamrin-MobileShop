@@ -1,0 +1,68 @@
+﻿@model BE.User;
+@{
+    Layout = null;
+}
+
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/assets/css/main.css">
+
+    <title>ثبت نام</title>
+</head>
+<body class="bg-[#fcfcfc]" style="background-image: linear-gradient(120deg, #e3eeff 0%, #f7fbfd 100%);">
+    <form asp-action="Register" asp-controller="Account" method="post">
+        <div class="h-screen flex justify-center items-center">
+            <div class="bg-white rounded-2xl border w-11/12 sm:w-7/12 md:w-6/12 lg:w-4/12 xl:w-3/12 h-auto py-5 px-4">
+                <img class="w-44 mx-auto" src="/assets/image/logo.png" alt="">
+                <div class="mt-5 text-lg font-semibold text-zinc-800">
+                    ثبت نام
+                </div>
+                <div class="my-4 text-xs text-zinc-500">
+                    <label asp-for="Name"></label>
+                </div>
+                <div class="flex flex-col gap-y-1">
+                    <input asp-for="Name" placeholder="نام" class="placeholder:text-right text-sm block w-full rounded-md border border-gray-300 px-3 py-3 font-normal text-gray-700 outline-none transition-all focus:border-blue-500 focus:outline-none">
+                    <span asp-validation-for="Name" style="color:red!important;"></span>
+                </div>
+
+                <div class="my-4 text-xs text-zinc-500">
+                    <label asp-for="Family"></label>
+                </div>
+                <div class="flex flex-col gap-y-1">
+                    <input asp-for="Family" placeholder="فامیلی" class="placeholder:text-right text-sm block w-full rounded-md border border-gray-300 px-3 py-3 font-normal text-gray-700 outline-none transition-all focus:border-blue-500 focus:outline-none">
+                    <span asp-validation-for="Family" style="color:red!important"></span>
+                </div>
+
+
+                <div class="my-4 text-xs text-zinc-500">
+                    <label asp-for="UserName"></label>
+                </div>
+                <div class="flex flex-col gap-y-1">
+                    <input  asp-for="UserName" placeholder="ایمیل" class="placeholder:text-right text-sm block w-full rounded-md border border-gray-300 px-3 py-3 font-normal text-gray-700 outline-none transition-all focus:border-blue-500 focus:outline-none">
+                    <span asp-validation-for="UserName" style="color:red!important"></span>
+
+                </div>
+
+                <div class="my-4 text-xs text-zinc-500">
+                    <label asp-for="Password"></label>
+                </div>
+                <div class="flex flex-col gap-y-1">
+                    <input type="password" asp-for="Password" placeholder="کلمه عبور" class="placeholder:text-right text-sm block w-full rounded-md border border-gray-300 px-3 py-3 font-normal text-gray-700 outline-none transition-all focus:border-blue-500 focus:outline-none">
+                    <span asp-validation-for="Password" style="color:red!important"></span>
+
+                </div>
+
+             
+                <button type="submit" class="mx-auto w-full px-2 py-2 mt-8 text-sm bg-blue-500 hover:bg-blue-400 transition text-gray-100 rounded-lg">
+                    ثبت نام
+                </button>
+              
+            </div>
+        </div>
+    </form>
+</body>
+</html>
