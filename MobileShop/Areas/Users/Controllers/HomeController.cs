@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace MobileShop.Areas.Users.Controllers
 {
     [Area("Users")]
-    [Authorize]
+    [Authorize(Roles = "User")]
     public class HomeController : Controller
     {
         public IActionResult Index()

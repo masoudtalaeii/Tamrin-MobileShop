@@ -1,19 +1,24 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using BE;
 using BLL;
-using DAL;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration.EnvironmentVariables;
 
 namespace MobileShop.Areas.Admin.Controllers
 {
-    [Area("Admin")]
-    [Authorize]
-    public class UsersController : Controller
+   
+    public class UsersController : BaseController
     {
-        public IActionResult Index(string filter = "")
-        {
-            UserBLL bll = new UserBLL();
-            var list = bll.read(filter);
+        private readonly IUserService _userService;
 
+        public UsersController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
+        public IActionResult Index()
+        {
+            var list = _userService.GetAllUser();
             return View(list);
         }
 
@@ -22,36 +27,9 @@ namespace MobileShop.Areas.Admin.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Create(BE.User model)
+        public IActionResult Create(User model)
         {
-            UserBLL bll = new UserBLL();
-            bll.Create(model);
-            return RedirectToAction("Index");
+            return View(model);
         }
-       
-        public IActionResult Edit(int id)
-        {
-            UserBLL bll = new UserBLL();
-            var user = bll.readById(id);
-         
-            return View(user);
-        }
-        [HttpPost]
-        public IActionResult Edit(BE.User model)
-        {
-            UserBLL bll = new UserBLL();
-            bll.Update(model);
-
-            return RedirectToAction("Index");
-        }
-
-        public IActionResult CheckUser(int id)
-        {
-            UserBLL bll = new UserBLL();
-            bll.CheckUser(id);
-
-            return RedirectToAction("Index");
-        }
-
     }
 }

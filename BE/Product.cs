@@ -18,9 +18,6 @@ namespace BE
         public int QuantityinStock { get; set; }
         public string pic {  get; set; }
 
-        //public object single()
-        //{
-        //    throw new NotImplementedException();
-        //}
+     
     }
 }

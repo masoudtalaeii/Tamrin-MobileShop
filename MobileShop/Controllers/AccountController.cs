@@ -1,20 +1,23 @@
-﻿using BLL;
-using DAL;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using System.ComponentModel.DataAnnotations;
-using System.Security.Claims;
+﻿
 using BE;
+using BLL;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Mvc;
 using MobileShop.Classes;
+using System.Security.Claims;
 
 namespace MobileShop.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly IUserService _userService;
 
-        
+        public AccountController(IUserService userService)
+        {
+            _userService = userService;
+        }
+
         public IActionResult Register()
         {
             return View();
@@ -23,21 +26,18 @@ namespace MobileShop.Controllers
         public IActionResult Register(BE.User model)
         {
 
-
-            UserBLL bll = new UserBLL();
-
-            if (model.UserName==null || model.Password==null ||  model.Family==null)
+            if (model.UserName == null || model.Password == null || model.Family == null)
             {
                 return View(model);
             }
-            if (bll.CheckUserForRegister(model.UserName))
+            if (_userService.CheckUserForRegister(model.UserName))
             {
                 ModelState.AddModelError("UserName", "نام کاربری تکراری است ");
                 return View(model);
             }
             model.Password = PasswordHelper.EncodePasswordMd5(model.Password);
 
-            bll.Create(model);
+            _userService.RegisterUser(model);
             return RedirectToAction("Index", "Home");
         }
 
@@ -52,13 +52,12 @@ namespace MobileShop.Controllers
         [Route("Login")]
         public IActionResult Login(LoginViewModel model)
         {
-            UserBLL bll = new UserBLL();
             if (!ModelState.IsValid)
             {
                 return View(model);
             }
             string hashPassword = PasswordHelper.EncodePasswordMd5(model.Password);
-            var user = bll.CheckUserForLogin(model.UserName,hashPassword);
+            var user = _userService.CheckUserForLogin(model.UserName, hashPassword);
 
             if (user == null)
             {
@@ -76,6 +75,7 @@ namespace MobileShop.Controllers
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                new Claim(ClaimTypes.Role,user.Role.RoleTitle)
             };
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 
@@ -87,7 +87,11 @@ namespace MobileShop.Controllers
             };
 
             HttpContext.SignInAsync(principal, properties);
-            return Redirect("/Admin");
+            if (user.RoleId == 1)
+            {
+                return Redirect("/Admin");
+            }
+            return Redirect("/Users");
         }
 
 
@@ -100,25 +104,25 @@ namespace MobileShop.Controllers
         }
 
 
-        public IActionResult ForgotPassword()
-        {
-            return View();
-        }
+        //public IActionResult ForgotPassword()
+        //{
+        //    return View();
+        //}
 
 
 
-        [HttpPost]
-        public IActionResult ForgotPassword(string UserName, string Pass)
-        {
-            UserBLL bll = new UserBLL();
-            var res = bll.RestPass(UserName, Pass);
-            if (res == true)
-            {
-                return RedirectToAction("Index", "Home");
-            }
+        //[HttpPost]
+        //public IActionResult ForgotPassword(string UserName, string Pass)
+        //{
+        //    UserBLL bll = new UserBLL();
+        //    var res = bll.RestPass(UserName, Pass);
+        //    if (res == true)
+        //    {
+        //        return RedirectToAction("Index", "Home");
+        //    }
 
-            return View();
-        }
+        //    return View();
+        //}
 
 
 

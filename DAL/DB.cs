@@ -11,14 +11,11 @@ namespace DAL
 {
     public class DB : DbContext
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+     
+        public DB(DbContextOptions<DB> options) : base(options)
         {
-            optionsBuilder.UseSqlServer(@"Server=.;Database=MoblieShop;Trusted_Connection=True;MultipleActiveResultSets=true;TrustServerCertificate=True");
-        }
-        //public DB(DbContextOptions<DB> options) : base(options)
-        //{
 
-        //}
+        }
         public DbSet<BE.User> Users { get; set; }
         public DbSet<BE.Role> roles { get; set; }
 

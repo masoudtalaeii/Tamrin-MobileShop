@@ -10,14 +10,14 @@ namespace MobileShop.Controllers
         {
             return View();
         }
-        public IActionResult All()
-        {
+        //public IActionResult All()
+        //{
 
-            ProductBLL pt = new ProductBLL();
-            var list = pt.read();
+        //    ProductBLL pt = new ProductBLL();
+        //    var list = pt.read();
 
-            return View(list);
-        }
+        //    return View(list);
+        //}
 
     }
 }

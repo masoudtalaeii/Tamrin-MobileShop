@@ -25,15 +25,15 @@ namespace MobileShop.Controllers
             return View();
         }
 
-        public IActionResult Details(int id)
-        {
-            ProductBLL pt = new ProductBLL();
-            var product = pt.readById(id);
+        //public IActionResult Details(int id)
+        //{
+        //    ProductBLL pt = new ProductBLL();
+        //    var product = pt.readById(id);
 
-            return View(product);
+        //    return View(product);
 
 
-        }
+        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

@@ -19,22 +19,25 @@ namespace BE
         [Display(Name = "فامیلی")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public string Family {  get; set; }
-        [Display(Name = "ایمیل")]
+
+        [Display(Name = "ایمیل/نام کاربری")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public string UserName {  get; set; }
+
         [Display(Name = "کلمه عبور")]
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public string Password {  get; set; }
 
         [Display(Name = "آدرس")]
         public string Adress { get; set; } = "تهران";
+
         [Display(Name = "وضعیت")]
         public bool IsActive { get; set; } = true;
 
         [Display(Name = "نقش کاربر")]
         public int RoleId { get; set; } 
 
-        public Role Rloe { get; set; }
+        public Role Role { get; set; }
 
     }
 }
