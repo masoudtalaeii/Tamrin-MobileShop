@@ -26,7 +26,7 @@ namespace MobileShop.Controllers
         public IActionResult Register(BE.User model)
         {
 
-            if (model.UserName == null || model.Password == null || model.Family == null)
+            if (model.UserName == null || model.Password == null || model.Family == null || model.Name == null)
             {
                 return View(model);
             }
@@ -36,7 +36,7 @@ namespace MobileShop.Controllers
                 return View(model);
             }
             model.Password = PasswordHelper.EncodePasswordMd5(model.Password);
-
+            model.RoleId = 2;
             _userService.RegisterUser(model);
             return RedirectToAction("Index", "Home");
         }

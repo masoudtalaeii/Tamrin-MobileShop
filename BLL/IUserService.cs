@@ -13,5 +13,10 @@ namespace BLL
         public void RegisterUser(User u);
         public bool CheckUserForRegister(string userName);
         public List<User> GetAllUser();
+        public List<Role> GetAllRoles();
+
+        public User GetUserById(int userId);
+
+        public void EditUser(User user);
     }
 }

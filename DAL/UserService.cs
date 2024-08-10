@@ -24,7 +24,18 @@ namespace DAL
 
         public bool CheckUserForRegister(string userName)
         {
-            return _db.Users.Any(U => U.UserName == userName );
+            return _db.Users.Any(U => U.UserName == userName);
+        }
+
+        public void EditUser(User user)
+        {
+            _db.Users.Update(user);
+            _db.SaveChanges();
+        }
+
+        public List<Role> GetAllRoles()
+        {
+            return _db.roles.ToList();
         }
 
         public List<User> GetAllUser()
@@ -32,9 +43,13 @@ namespace DAL
             return _db.Users.ToList();
         }
 
+        public User GetUserById(int userId)
+        {
+            return _db.Users.FirstOrDefault(u => u.UserId == userId);
+        }
+
         public void RegisterUser(User u)
         {
-            u.RoleId = 2;
             _db.Users.Add(u);
             _db.SaveChanges();
         }

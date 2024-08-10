@@ -1,0 +1,62 @@
+﻿@model User
+
+
+    <div class="">
+        <div class="text-zinc-800 text-lg mb-4 font-semibold">
+            جزئیات کاربر:
+        </div>
+        <!-- product -->
+        <div class="mt-7 flex flex-col md:flex-row border-b pb-4">
+            
+            <div class="mr-2 md:mr-5 w-full">
+                <!-- title -->
+                <div class="text-xs sm:text-sm text-zinc-700">
+                    <label asp-for="Name"></label>
+                    @Model.Name
+                </div>
+
+            <div class="text-xs sm:text-sm text-zinc-700">
+                <label asp-for="Family"></label>
+                @Model.Family
+            </div>
+
+            <div class="text-xs sm:text-sm text-zinc-700">
+                <label asp-for="UserName"></label>
+                @Model.UserName
+            </div>
+
+            <div class="text-xs sm:text-sm text-zinc-700">
+                <label asp-for="Adress"></label>
+                @Model.Adress
+            </div>
+
+            <div class="text-xs sm:text-sm text-zinc-700">
+                <label asp-for="RoleId"></label>
+                @if (Model.RoleId == 1)
+                {
+                    <span class="text-green-600">ادمین</span>
+                }
+                else
+                {
+                    <span class="text-green-600">کاربر عادی</span>
+
+                }
+            </div>
+
+            <div class="text-xs sm:text-sm text-zinc-700">
+                <label asp-for="IsActive"></label>
+                @if (Model.IsActive == true)
+                {
+                    <span class="text-green-600">فعال</span>
+                }
+                else
+                {
+                    <span class="text-red-500">غیر فعال</span>
+
+                }
+            </div>
+               
+            </div>
+        </div>
+ 
+    </div>
