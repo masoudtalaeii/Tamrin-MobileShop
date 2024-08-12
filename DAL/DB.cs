@@ -16,8 +16,9 @@ namespace DAL
         {
 
         }
-        public DbSet<BE.User> Users { get; set; }
-        public DbSet<BE.Role> roles { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> roles { get; set; }
+        public DbSet<Silder> silders { get; set; }
 
         public DbSet<BE.Product> Products { get; set; }
 

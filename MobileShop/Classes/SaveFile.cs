@@ -1,4 +1,4 @@
-﻿namespace MobileShop
+﻿namespace MobileShop.Classes
 {
     public static class SaveFile
     {
@@ -28,9 +28,9 @@
                 return false;
             }
             var imagePath1 = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/" + pathFolder + "/", name);
-            if (System.IO.File.Exists(imagePath1))
+            if (File.Exists(imagePath1))
             {
-                System.IO.File.Delete(imagePath1);
+                File.Delete(imagePath1);
                 return true;
             }
             return false;

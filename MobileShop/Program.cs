@@ -9,7 +9,11 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<DB>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ProjContext")));
+
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<ISilderService, SilderService>();
+
+
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = CookieAuthenticationDefaults.AuthenticationScheme;

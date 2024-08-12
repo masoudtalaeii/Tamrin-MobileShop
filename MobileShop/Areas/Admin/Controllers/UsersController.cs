@@ -76,5 +76,26 @@ namespace MobileShop.Areas.Admin.Controllers
             var user = _userService.GetUserById(id);
             return View(user);
         }
+
+        public IActionResult EditProfile()
+        {
+            //int id = User.Identity.Name;
+            var user = _userService.GetUserById(1);
+            return View(user);
+        }
+
+        [HttpPost]
+        public IActionResult EditProfile(User model)
+        {
+            if (model.UserName == null || model.Password == null || model.Family == null || model.Name == null)
+            {
+                return View(model);
+            }
+
+            model.Password = PasswordHelper.EncodePasswordMd5(model.Password);
+
+            _userService.EditUser(model);
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
