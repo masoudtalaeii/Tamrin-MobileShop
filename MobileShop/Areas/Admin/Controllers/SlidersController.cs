@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using MobileShop.Classes;
 
 namespace MobileShop.Areas.Admin.Controllers
-{
+{  
     public class SlidersController : BaseController
     {
         private readonly ISilderService _silderService;
