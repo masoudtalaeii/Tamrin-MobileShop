@@ -22,5 +22,15 @@ namespace DAL
         {
             return _db.silders.ToList();
         }
+        public Silder GetSilderById(int Id)
+        {
+            return _db.silders.FirstOrDefault(u => u.SliderId == Id);
+        }
+
+        public void EditSilder(Silder silder)
+        {
+            _db.silders.Update(silder);
+            _db.SaveChanges();
+        }
     }
 }

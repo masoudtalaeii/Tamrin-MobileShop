@@ -40,5 +40,24 @@ namespace MobileShop.Areas.Admin.Controllers
             return RedirectToAction("Index", "Sliders");
         }
 
+        public IActionResult Edit(int id)
+        {
+            var silder = _silderService.GetSilderById(id);
+            return View(silder);
+        }
+        [HttpPost]
+        public IActionResult Edit(Silder model,IFormFile Up)
+        {
+            if (Up != null)
+            {
+                if (SaveFile.DeleteFile("/UpLoad/Slider", model.pic))
+                {
+                    model.pic = SaveFile.SaveFileAndImages("/UpLoad/Slider", Up);
+
+                } 
+            }
+            _silderService.EditSilder(model);
+            return RedirectToAction("Index", "Sliders");
+        }
     }
 }

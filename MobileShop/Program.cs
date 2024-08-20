@@ -12,6 +12,7 @@ builder.Services.AddDbContext<DB>(options =>
 
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ISilderService, SilderService>();
+builder.Services.AddScoped<IProductGroupService,ProductGroupService>();
 
 
 builder.Services.AddAuthentication(options =>

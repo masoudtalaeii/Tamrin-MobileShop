@@ -1,4 +1,4 @@
-﻿@model List<BE.Silder>
+﻿@model List<BE.ProductGroup>
 @{
     int id = 1;
 }
@@ -7,11 +7,11 @@
 
 <div class="">
     <div class="text-zinc-800 text-lg font-semibold mb-4">
-        لیست اسلایدر
+        لیست گروه محصولات
         <br />
         <a asp-area="Admin"
            asp-action="Create"
-           asp-controller="Sliders"
+           asp-controller="ProductGroups"
            class="text-zinc-50 hover:text-zinc-100 transition bg-green-600 hover:bg-green-600 px-2 py-1 text-xs rounded-lg">افزودن</a>
 
     </div>
@@ -25,12 +25,7 @@
                 </th>
                 <th>
                     <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400 py-3">
-                        تصویر
-                    </p>
-                </th>
-                <th>
-                    <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400">
-                        وضعیت
+                        نام گروه
                     </p>
                 </th>
                 <th>
@@ -52,30 +47,16 @@
                     </td>
                     <td class="px-3 py-4 border-b">
                         <p class="text-zinc-700">
-                            <img src="/Upload/Slider/@item.pic" style="width:200px;"/>
+                            @item.Name
                         </p>
                     </td>
-                   
-                    <td class="p-3 border-b">
-                        <p class="text-zinc-700">
-                            @if (item.IsActive == true)
-                            {
-                                <span class="text-green-600">فعال</span>
-                            }
-                            else
-                            {
-                                <span class="text-red-500">غیر فعال</span>
 
-                            }
-
-                        </p>
-                    </td>
-                   
                     <td class="p-3 border-b">
-                      
-                        <a asp-area="Admin" asp-controller="Sliders"
+
+                        <a asp-area="Admin"
+                           asp-controller="ProductGroups"
                            asp-action="Edit"
-                           asp-route-id="@item.SliderId"
+                           asp-route-id="@item.ProductGroupId"
                            class="text-zinc-50 hover:text-zinc-100 transition bg-blue-500 hover:bg-blue-500  px-2 py-1 text-xs rounded-lg">ویرایش</a>
                     </td>
                 </tr>

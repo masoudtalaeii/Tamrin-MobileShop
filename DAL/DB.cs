@@ -20,6 +20,7 @@ namespace DAL
         public DbSet<Role> roles { get; set; }
         public DbSet<Silder> silders { get; set; }
 
+        public DbSet<ProductGroup> productGroups { get; set; }
         public DbSet<BE.Product> Products { get; set; }
 
 
