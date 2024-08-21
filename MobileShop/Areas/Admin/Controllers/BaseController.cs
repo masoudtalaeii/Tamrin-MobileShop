@@ -7,6 +7,5 @@ namespace MobileShop.Areas.Admin.Controllers
     [Authorize(Roles = "Admin")]
     public class BaseController : Controller
     {
-       
     }
 }

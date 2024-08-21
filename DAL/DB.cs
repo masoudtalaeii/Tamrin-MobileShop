@@ -21,7 +21,9 @@ namespace DAL
         public DbSet<Silder> silders { get; set; }
 
         public DbSet<ProductGroup> productGroups { get; set; }
-        public DbSet<BE.Product> Products { get; set; }
+        public DbSet<Article> Articles { get; set; }
+        public DbSet<ArticleGroup> ArticleGroups { get; set; }
+        public DbSet<Product> Products { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
