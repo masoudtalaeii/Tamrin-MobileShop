@@ -1,0 +1,57 @@
+﻿@model AboutUs
+
+<div class="flex justify-between items-center p-4 border-b">
+    <h3 class="text-gray-700">ویرایش کردن</h3>
+
+</div>
+
+<div>
+    <!-- inputs -->
+    <form asp-area="Admin" asp-controller="Abouts" asp-action="Edit" method="post">
+        <input type="hidden" asp-for="AboutUsId"/>
+        <div class="sm:flex gap-x-5 mt-5">
+            <div class="sm:w-1/2 mb-2 sm:mb-0 flex flex-col gap-y-1">
+                <label asp-for="Phone" class="text-sm text-zinc-700 flex">
+
+                </label>
+                <input asp-for="Phone" class="focus:shadow-primary-outline text-sm leading-5.6 block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all focus:border-blue-300 focus:outline-none">
+                <span asp-validation-for="Phone" class="text-red-600 "></span>
+            </div>
+            <div class="sm:w-1/2 flex flex-col gap-y-1">
+                <label asp-for="Moblie" class="text-sm text-zinc-700 flex">
+                </label>
+                <input asp-for="Moblie" class="focus:shadow-primary-outline text-sm leading-5.6 block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all focus:border-blue-300 focus:outline-none">
+                <span asp-validation-for="Moblie" class="text-red-600 "></span>
+            </div>
+        </div>
+        <div class="sm:flex gap-x-5 mt-5">
+            <div class="sm:w-1/2 mb-2 sm:mb-0 flex flex-col gap-y-1">
+                <label asp-for="Address" class="text-sm text-zinc-700 flex">
+                </label>
+                <input asp-for="Address" class="focus:shadow-primary-outline text-sm leading-5.6 block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all focus:border-blue-300 focus:outline-none">
+                <span asp-validation-for="Address" class="text-red-600 "></span>
+            </div>
+
+            <div class="sm:w-1/2 mb-2 sm:mb-0 flex flex-col gap-y-1">
+                <label asp-for="Email" class="text-sm text-zinc-700 flex">
+                </label>
+                <input asp-for="Email" class="focus:shadow-primary-outline text-sm leading-5.6 block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all focus:border-blue-300 focus:outline-none">
+                <span asp-validation-for="Email" class="text-red-600 "></span>
+            </div>
+
+        </div>
+        <div class="sm:flex gap-x-5 mt-5">
+
+            <div class="sm:flex mb-2 sm:mb-0 flex flex-col gap-y-1">
+                <label asp-for="AboutMe" class="text-sm text-zinc-700 flex">
+                </label>
+                <textarea cols="200" rows="15" asp-for="AboutMe" class="focus:shadow-primary-outline text-sm leading-5.6 block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all focus:border-blue-300 focus:outline-none"></textarea>
+                <span asp-validation-for="AboutMe" class="text-red-600 "></span>
+            </div>
+        </div>
+        <button type="submit" class="mx-auto w-1/3 px-2 py-3 mt-8 text-sm bg-blue-500 hover:bg-blue-400 transition text-gray-100 rounded-lg">
+            ثبت اطلاعات
+        </button>
+        <a asp-area="Admin" asp-action="Index" asp-controller="Abouts" class="mx-auto w-1/3 px-2 py-3 mt-8 text-sm bg-red-500 hover:bg-red-400 transition text-gray-100 rounded-lg">بازگشت</a>
+    </form>
+</div>

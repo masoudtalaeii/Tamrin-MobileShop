@@ -15,6 +15,8 @@ builder.Services.AddScoped<ISilderService, SilderService>();
 builder.Services.AddScoped<IProductGroupService,ProductGroupService>();
 builder.Services.AddScoped<IArticleGroupService, ArticleGroupService>();
 builder.Services.AddScoped<IArticleService, ArticleService>();
+builder.Services.AddScoped<IAboutsService, AboutsService>();
+builder.Services.AddScoped<ISocialNetworkService, SocialNetworkService>();
 
 
 builder.Services.AddAuthentication(options =>

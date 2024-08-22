@@ -14,7 +14,7 @@
 
 
             <div class="text-xs sm:text-sm text-zinc-700">
-                <label class="text-green-600" asp-for="pic"></label><span class="text-green-600">:</span><br />
+                <label class="text-yellow-500" asp-for="pic"></label><span class="text-yellow-500">:</span><br />
                 <a href="/Images/Articles/@Model.pic" target="_blank">
                     <img src="/Upload/Article/@Model.pic" />
                 </a>
@@ -22,30 +22,30 @@
 
 
             <div class="text-xs sm:text-sm text-zinc-700">
-                <label class="text-green-600" asp-for="Title"></label><span class="text-green-600">:</span><br />
+                <label class="text-yellow-500" asp-for="Title"></label><span class="text-yellow-500">:</span><br />
                 @Model.Title
             </div>
 
             <div class="text-xs sm:text-sm text-zinc-700">
-                <label class="text-green-600" asp-for="shortDescription"></label><span class="text-green-600">:</span><br />
+                <label class="text-yellow-500" asp-for="shortDescription"></label><span class="text-yellow-500">:</span><br />
                 <span style="text-align: justify !important;">
                     @Model.shortDescription
                 </span>
             </div>
 
             <div class="text-xs sm:text-sm text-zinc-700">
-                <label class="text-green-600" asp-for="totallDescription"></label><span class="text-green-600">:</span><br />
+                <label class="text-yellow-500" asp-for="totallDescription"></label><span class="text-yellow-500">:</span><br />
                 <span style="text-align: justify !important;">
                     @Model.totallDescription
                 </span>
             </div>
 
             <div class="text-xs sm:text-sm text-zinc-700">
-                <label class="text-green-600" asp-for="Author"></label><span class="text-green-600">:</span><br />
+                <label class="text-yellow-500" asp-for="Author"></label><span class="text-yellow-500">:</span><br />
                 @Model.Author
             </div>
             <div class="text-xs sm:text-sm text-zinc-700">
-                <label class="text-green-600" asp-for="Tag"></label><span class="text-green-600">:</span><br />
+                <label class="text-yellow-500" asp-for="Tag"></label><span class="text-yellow-500">:</span><br />
                 @{
                     string[] tags = Model.Tag.Split('-');
 
@@ -64,23 +64,23 @@
             </div>
 
             <div class="text-xs sm:text-sm text-zinc-700">
-                <label class="text-green-600" asp-for="date"></label><span class="text-green-600">:</span><br />
+                <label class="text-yellow-500" asp-for="date"></label><span class="text-yellow-500">:</span><br />
                 @Model.date.ToShamsi()
             </div>
 
             <div class="text-xs sm:text-sm text-zinc-700">
-                <label class="text-green-600" asp-for="SeeCount"></label><span class="text-green-600">:</span><br />
+                <label class="text-yellow-500" asp-for="SeeCount"></label><span class="text-yellow-500">:</span><br />
                 @Model.SeeCount
             </div>
 
             <div class="text-xs sm:text-sm text-zinc-700">
-                <label class="text-green-600">گروه مقاله</label><span class="text-green-600">:</span><br />
+                <label class="text-yellow-500">گروه مقاله</label><span class="text-yellow-500">:</span><br />
 
                 <span>@Model.articleGroup.Name</span>
             </div>
 
             <div class="text-xs sm:text-sm text-zinc-700">
-                <label class="text-green-600" asp-for="IsActive"></label><span class="text-green-600">:</span><br />
+                <label class="text-yellow-500" asp-for="IsActive"></label><span class="text-yellow-500">:</span><br />
                 @if (Model.IsActive == true)
                 {
                     <span>فعال</span>

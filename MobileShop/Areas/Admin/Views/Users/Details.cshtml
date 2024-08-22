@@ -11,27 +11,27 @@
             <div class="mr-2 md:mr-5 w-full">
                 <!-- title -->
                 <div class="text-xs sm:text-sm text-zinc-700">
-                    <label asp-for="Name"></label>
+                <label class="text-yellow-500" asp-for="Name"></label><span class="text-yellow-500">:</span><br />
                     @Model.Name
                 </div>
 
             <div class="text-xs sm:text-sm text-zinc-700">
-                <label asp-for="Family"></label>
+                <label class="text-yellow-500" asp-for="Family"></label><span class="text-yellow-500">:</span><br />
                 @Model.Family
             </div>
 
             <div class="text-xs sm:text-sm text-zinc-700">
-                <label asp-for="UserName"></label>
+                <label class="text-yellow-500" asp-for="UserName"></label><span class="text-yellow-500">:</span><br />
                 @Model.UserName
             </div>
 
             <div class="text-xs sm:text-sm text-zinc-700">
-                <label asp-for="Adress"></label>
+                <label class="text-yellow-500" asp-for="Adress"></label><span class="text-yellow-500">:</span><br />
                 @Model.Adress
             </div>
 
             <div class="text-xs sm:text-sm text-zinc-700">
-                <label asp-for="RoleId"></label>
+                <label class="text-yellow-500" asp-for="RoleId"></label><span class="text-yellow-500">:</span><br />
                 @if (Model.RoleId == 1)
                 {
                     <span class="text-green-600">ادمین</span>
@@ -44,7 +44,7 @@
             </div>
 
             <div class="text-xs sm:text-sm text-zinc-700">
-                <label asp-for="IsActive"></label>
+                <label class="text-yellow-500" asp-for="IsActive"></label><span class="text-yellow-500">:</span><br />
                 @if (Model.IsActive == true)
                 {
                     <span class="text-green-600">فعال</span>

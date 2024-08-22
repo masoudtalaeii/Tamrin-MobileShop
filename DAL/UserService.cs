@@ -53,5 +53,12 @@ namespace DAL
             _db.Users.Add(u);
             _db.SaveChanges();
         }
+
+        public int GetUserIdByUserName(string username)
+        {
+            return _db.Users.FirstOrDefault(l => l.UserName == username).UserId;
+        }
+
+
     }
 }

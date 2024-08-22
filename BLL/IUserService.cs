@@ -18,5 +18,7 @@ namespace BLL
         public User GetUserById(int userId);
 
         public void EditUser(User user);
+
+        public int GetUserIdByUserName(string username);
     }
 }

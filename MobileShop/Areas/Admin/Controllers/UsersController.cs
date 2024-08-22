@@ -9,7 +9,7 @@ using MobileShop.Classes;
 
 namespace MobileShop.Areas.Admin.Controllers
 {
-   
+
     public class UsersController : BaseController
     {
         private readonly IUserService _userService;
@@ -33,9 +33,9 @@ namespace MobileShop.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Create(User model)
         {
-            if (model.UserName == null || model.Password == null || model.Family == null|| model.Name==null)
+            if (model.UserName == null || model.Password == null || model.Family == null || model.Name == null)
             {
-                ViewData["RoleId"] = new SelectList(_userService.GetAllRoles(), "RoleId", "RoleTitle",model.RoleId);
+                ViewData["RoleId"] = new SelectList(_userService.GetAllRoles(), "RoleId", "RoleTitle", model.RoleId);
                 return View(model);
             }
             if (_userService.CheckUserForRegister(model.UserName))
@@ -48,12 +48,12 @@ namespace MobileShop.Areas.Admin.Controllers
             _userService.RegisterUser(model);
             return RedirectToAction("Index", "Users");
         }
-      
-        
+
+
         public IActionResult Edit(int id)
         {
-            var user=_userService.GetUserById(id);
-            ViewData["RoleId"] = new SelectList(_userService.GetAllRoles(), "RoleId", "RoleTitle",user.RoleId);
+            var user = _userService.GetUserById(id);
+            ViewData["RoleId"] = new SelectList(_userService.GetAllRoles(), "RoleId", "RoleTitle", user.RoleId);
             return View(user);
         }
         [HttpPost]
@@ -64,7 +64,7 @@ namespace MobileShop.Areas.Admin.Controllers
                 ViewData["RoleId"] = new SelectList(_userService.GetAllRoles(), "RoleId", "RoleTitle", model.RoleId);
                 return View(model);
             }
-           
+
             model.Password = PasswordHelper.EncodePasswordMd5(model.Password);
 
             _userService.EditUser(model);
@@ -79,8 +79,9 @@ namespace MobileShop.Areas.Admin.Controllers
 
         public IActionResult EditProfile()
         {
-            //int id = User.Identity.Name;
-            var user = _userService.GetUserById(1);
+
+            var userID = _userService.GetUserIdByUserName(User.Identity.Name);
+            var user = _userService.GetUserById(userID);
             return View(user);
         }
 
