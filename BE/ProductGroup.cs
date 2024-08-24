@@ -11,6 +11,7 @@ namespace BE
         [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
         public string Name { get; set; }
 
+        public List<Product> products { get; set; }
 
     }
 }

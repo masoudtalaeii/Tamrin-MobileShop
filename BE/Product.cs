@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace BE
 {
@@ -13,11 +7,35 @@ namespace BE
 
         [Key]
         public int ProductId { get; set; }
-        public string Name { get; set; }
-        public double Price {  get; set; }
-        public int QuantityinStock { get; set; }
-        public string pic {  get; set; }
 
-     
+        [Display(Name = "نام محصول / فارسی")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        public string Name_Farsi { get; set; }
+
+        [Display(Name = "نام محصول / انگلیسی")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        public string Name_English { get; set; }
+
+        [Display(Name = "قیمت(تومان)")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        public int Price { get; set; }
+
+        [Display(Name = "تصویر محصول")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        public string pic { get; set; }
+
+        [Display(Name = "فعال / غیرفعال")]
+        public bool IsActive { get; set; }
+
+        [Display(Name = "گروه محصول")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        public int ProductGroupId { get; set; }
+
+        public List<ProductComment> ProductComments { get; set; }
+        public List<ProductFeature> ProductFeatures { get; set; }
+        public List<ProductSpecification> productSpecifications { get; set; }
+        public List<ProductGallery> productGalleries { get; set; }
+        public ProductGroup ProductGroup { get; set; }
+
     }
 }

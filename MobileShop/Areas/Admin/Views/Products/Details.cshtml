@@ -1,0 +1,66 @@
+﻿@model Product
+
+
+<div class="">
+    <div class="text-zinc-800 text-lg mb-4 font-semibold">
+        جزئیات محصول:
+    </div>
+    <!-- product -->
+    <div class="mt-7 flex flex-col md:flex-row border-b pb-4">
+
+        <div class="mr-2 md:mr-5 w-full">
+
+
+
+
+            <div class="text-xs sm:text-sm text-zinc-700">
+                <label class="text-yellow-500" asp-for="pic"></label><span class="text-yellow-500">:</span><br />
+                <a href="/Images/Product/@Model.pic" target="_blank">
+                    <img src="/Upload/Product/@Model.pic" />
+                </a>
+            </div>
+
+
+            <div class="text-xs sm:text-sm text-zinc-700">
+                <label class="text-yellow-500" asp-for="Name_Farsi"></label><span class="text-yellow-500">:</span><br />
+                @Model.Name_Farsi
+            </div>
+
+            <div class="text-xs sm:text-sm text-zinc-700">
+                <label class="text-yellow-500" asp-for="Name_English"></label><span class="text-yellow-500">:</span><br />
+                <span style="text-align: justify !important;">
+                    @Model.Name_English
+                </span>
+            </div>
+
+            <div class="text-xs sm:text-sm text-zinc-700">
+                <label class="text-yellow-500" asp-for="Price"></label><span class="text-yellow-500">:</span><br />
+                <span style="text-align: justify !important;">
+                    @Model.Price.ToToman()
+                </span>
+            </div>
+
+            <div class="text-xs sm:text-sm text-zinc-700">
+                <label class="text-yellow-500">گروه محصول</label><span class="text-yellow-500">:</span><br />
+
+                <span>@Model.ProductGroup.Name</span>
+            </div>
+
+            <div class="text-xs sm:text-sm text-zinc-700">
+                <label class="text-yellow-500" asp-for="IsActive"></label><span class="text-yellow-500">:</span><br />
+                @if (Model.IsActive == true)
+                {
+                    <span>فعال</span>
+                }
+                else
+                {
+                    <span>غیر فعال</span>
+
+                }
+            </div>
+
+        </div>
+    </div>
+    <a asp-area="Admin" asp-action="Index" asp-controller="Products" class="mx-auto w-1/3 px-2 py-3 mt-8 text-sm bg-red-500 hover:bg-red-400 transition text-gray-100 rounded-lg">بازگشت</a>
+
+</div>

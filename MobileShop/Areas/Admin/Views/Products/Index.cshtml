@@ -1,0 +1,177 @@
+﻿@model List<Product>
+@{
+    int id = 1;
+}
+
+
+
+<div class="">
+    <div class="text-zinc-800 text-lg font-semibold mb-4">
+        لیست محصولات
+        <br />
+        <a asp-area="Admin"
+           asp-action="Create"
+           asp-controller="Products"
+           class="text-zinc-50 hover:text-zinc-100 transition bg-green-600 hover:bg-green-600 px-2 py-1 text-xs rounded-lg">افزودن</a>
+
+    </div>
+    <table class="w-full">
+        <thead>
+            <tr class="border-y">
+                <th>
+                    <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400 py-3">
+                        R
+                    </p>
+                </th>
+                <th>
+                    <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400 py-3">
+                        تصویر
+                    </p>
+                </th>
+                <th>
+                    <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400">
+                        عنوان
+                    </p>
+                </th>
+               
+                <th>
+                    <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400">
+                        قیمت 
+                    </p>
+                </th>
+
+                <th>
+                    <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400">
+                        وضعیت 
+                    </p>
+                </th>
+                 <th>
+                    <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400">
+                        گالری
+                    </p>
+                </th>
+                <th>
+                    <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400">
+                        کامنت
+                    </p>
+                </th>
+                <th>
+                    <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400">
+                        ویژگی ها
+                    </p>
+                </th>
+                <th>
+                    <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400">
+                        مشخصات ها
+                    </p>
+                </th>
+              
+
+                <th>
+                    <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400 py-3">
+                        عملیات
+                    </p>
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="hover:bg-zinc-100 text-xs md:text-sm">
+                    <td class="px-3 py-4 border-b">
+                        <p class="text-zinc-700">
+                            @id
+                        </p>
+                    </td>
+                    <td class="px-3 py-4 border-b">
+                        <p class="text-zinc-700">
+                            <img src="/Upload/Product/@item.pic" style="width:80px;" />
+                        </p>
+                    </td>
+                    <td class="p-3 border-b">
+                        <p class="text-zinc-700">
+                            @item.Name_Farsi
+                        </p>
+                    </td>
+                 
+                    <td class="p-3 border-b">
+                        <p class="text-zinc-700">
+                            @item.Price.ToToman()
+                        </p>
+                    </td>
+                    <td class="p-3 border-b">
+                        <p class="text-zinc-700">
+                            @if (item.IsActive == true)
+                            {
+                                <span class="text-green-600">فعال</span>
+                            }
+                            else
+                            {
+                                <span class="text-red-500">غیر فعال</span>
+
+                            }
+
+                        </p>
+                    </td>
+
+                    <td class="p-3 border-b">
+                        <p class="text-zinc-700">
+                            <a asp-area="Admin"
+                               asp-controller="ProductGallery"
+                               asp-action="CreateGallery"
+                               asp-route-id="@item.ProductId"
+                               class="text-zinc-50 hover:text-zinc-100 transition bg-red-500 hover:bg-red-500 px-2 py-1 text-xs rounded-lg">+</a>
+
+                        </p>
+                    </td>
+                    <td class="p-3 border-b">
+                        <p class="text-zinc-700">
+                            <a asp-area="Admin"
+                               asp-controller="Products"
+                               asp-action="Details"
+                               asp-route-id="@item.ProductId"
+                               class="text-zinc-50 hover:text-zinc-100 transition bg-red-500 hover:bg-red-500 px-2 py-1 text-xs rounded-lg">+</a>
+
+                        </p>
+                    </td>
+                    <td class="p-3 border-b">
+                        <p class="text-zinc-700">
+                            <a asp-area="Admin"
+                               asp-controller="Products"
+                               asp-action="Details"
+                               asp-route-id="@item.ProductId"
+                               class="text-zinc-50 hover:text-zinc-100 transition bg-red-500 hover:bg-red-500 px-2 py-1 text-xs rounded-lg">+</a>
+
+                        </p>
+                    </td>
+                    <td class="p-3 border-b">
+                        <p class="text-zinc-700">
+                            <a asp-area="Admin"
+                               asp-controller="Products"
+                               asp-action="Details"
+                               asp-route-id="@item.ProductId"
+                               class="text-zinc-50 hover:text-zinc-100 transition bg-red-500 hover:bg-red-500 px-2 py-1 text-xs rounded-lg">+</a>
+
+                        </p>
+                    </td>
+
+                   
+                    <td class="p-3 border-b">
+                        <a asp-area="Admin"
+                           asp-controller="Products"
+                           asp-action="Details"
+                           asp-route-id="@item.ProductId"
+                           class="text-zinc-50 hover:text-zinc-100 transition bg-red-500 hover:bg-red-500 px-2 py-1 text-xs rounded-lg">جزئیات</a>
+
+                        <a asp-area="Admin" asp-controller="Products"
+                           asp-action="Edit"
+                           asp-route-id="@item.ProductId"
+                           class="text-zinc-50 hover:text-zinc-100 transition bg-blue-500 hover:bg-blue-500  px-2 py-1 text-xs rounded-lg">ویرایش</a>
+                    </td>
+                </tr>
+                id += 1;
+            }
+        </tbody>
+    </table>
+</div>

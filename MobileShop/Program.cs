@@ -17,6 +17,8 @@ builder.Services.AddScoped<IArticleGroupService, ArticleGroupService>();
 builder.Services.AddScoped<IArticleService, ArticleService>();
 builder.Services.AddScoped<IAboutsService, AboutsService>();
 builder.Services.AddScoped<ISocialNetworkService, SocialNetworkService>();
+builder.Services.AddScoped<IProducService, ProducService>();
+builder.Services.AddScoped<IProductGalleryService, ProductGalleryService>();
 
 
 builder.Services.AddAuthentication(options =>

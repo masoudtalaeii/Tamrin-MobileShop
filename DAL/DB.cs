@@ -20,13 +20,16 @@ namespace DAL
         public DbSet<Role> roles { get; set; }
         public DbSet<Silder> silders { get; set; }
 
-        public DbSet<ProductGroup> productGroups { get; set; }
         public DbSet<Article> Articles { get; set; }
         public DbSet<ArticleGroup> ArticleGroups { get; set; }
         public DbSet<AboutUs> aboutUs { get; set; }
         public DbSet<SocialNetwork> socialNetworks { get; set; }
         public DbSet<Product> Products { get; set; }
-
+        public DbSet<ProductGroup> productGroups { get; set; }
+        public DbSet<ProductComment> productComments { get; set; }
+        public DbSet<ProductFeature> productFeatures { get; set; }
+        public DbSet<ProductGallery> productGalleries { get; set; }
+        public DbSet<ProductSpecification> productSpecifications { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

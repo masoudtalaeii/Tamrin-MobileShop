@@ -1,0 +1,40 @@
+﻿@model ProductGallery
+
+@using BLL
+
+@using Microsoft.EntityFrameworkCore;
+
+@inject IProductGalleryService _productGalleryService
+@{
+
+    IEnumerable<ProductGallery> find = _productGalleryService.GetAllByProductId(Model.ProductId);
+}
+
+<div class="">
+
+    <div class=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 mt-5" ">
+
+    @if (find.Any())
+    {
+        @foreach (var item in find)
+        {
+                <a href="/Admin/ProductGallery/DeletePicGallery/@item.ProductGalleryId" 
+                   class="bg-white rounded-xl border hover:drop-shadow-md transition px-4 py-4 relative flex md:flex-col">
+                    <div class="bg-red-500 rounded-full p-2 text-white flex items-center gap-x-1 text-xs absolute top-2 right-2">
+                        حذف
+                    </div>
+                    <img class="mx-auto w-5/12 md:w-full" src="/Upload/ProductGallery/@item.ImageName" />
+
+                </a>
+
+        }
+    }
+    else
+    {
+            <span class="text-red-600">
+                تصویری درج نشده
+            </span>
+    }
+
+    </div>
+</div>

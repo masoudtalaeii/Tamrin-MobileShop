@@ -1,0 +1,73 @@
+﻿@model ProductGallery
+
+
+
+
+<div class="flex justify-between items-center p-4 border-b">
+    <h3 class="text-gray-700">اضافه کردن</h3>
+
+</div>
+
+<div>
+    <!-- inputs -->
+    <form asp-area="Admin" asp-action="CreateGallery" asp-controller="ProductGallery" method="post" enctype="multipart/form-data">
+        <input asp-for="ProductId" type="hidden" />
+        <div class="sm:flex gap-x-5 mt-5">
+
+            <div class="sm:w-1/2 flex gap-x-2 justify-center items-center pt-7 h-16">
+                <span class="w-auto text-sm text-zinc-700">
+                    عکس گالری
+                </span>
+                <label for="dropzone-file" class="w-8/12 sm:w-1/3 flex flex-col items-center justify-center border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                    <div class="flex flex-col items-center justify-center p-1">
+                        <svg class="w-6 h-6 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"></path>
+                        </svg>
+                    </div>
+                    <input id="dropzone-file"  type="file" class="hidden" name="filePic" onchange="imagesPreview(this, 'div.gallery');" required  multiple="multiple" accept="image/*" />
+                </label>
+            </div>
+        </div>
+
+
+        <button type="submit" class="mx-auto w-1/3 px-2 py-3 mt-8 text-sm bg-blue-500 hover:bg-blue-400 transition text-gray-100 rounded-lg">
+            ثبت اطلاعات
+        </button>
+        <a asp-area="Admin" asp-action="Index" asp-controller="Products" class="mx-auto w-1/3 px-2 py-3 mt-8 text-sm bg-red-500 hover:bg-red-400 transition text-gray-100 rounded-lg">بازگشت</a>
+    </form>
+</div>
+
+
+
+@*Show list*@
+
+<partial name="_ProductsGallery" model='new ProductGallery { ProductId =Model.ProductId }' />
+
+
+@section Scripts
+{
+
+    @*show Image*@
+    <script>
+        var imagesPreview = function (input, placeToInsertImagePreview) {
+            $("div.gallery").empty();
+            if (input.files) {
+                var filesAmount = input.files.length;
+                for (i = 0; i < filesAmount; i++) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (event) {
+                        $($
+                            .parseHTML('<img style="margin: 8px; width: 250px; height: 250px;">'))
+                            .attr('src', event.target.result)
+                            .appendTo(placeToInsertImagePreview);
+                    }
+                    reader.readAsDataURL(input.files[i]);
+                }
+            }
+        };
+    </script>
+
+    
+}
+

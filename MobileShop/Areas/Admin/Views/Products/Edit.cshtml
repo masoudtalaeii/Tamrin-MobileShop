@@ -1,0 +1,77 @@
+﻿@model Product
+
+
+<div class="flex justify-between items-center p-4 border-b">
+    <h3 class="text-gray-700">وایریش کردن</h3>
+
+</div>
+
+<div>
+    <!-- inputs -->
+    <form asp-area="Admin" asp-controller="Products" asp-action="Edit" method="post" enctype="multipart/form-data">
+        <input type="hidden" asp-for="ProductId" />
+        <input type="hidden" asp-for="pic" />
+        <div class="sm:flex gap-x-5 mt-5">
+            <div class="sm:w-1/2 mb-2 sm:mb-0 flex flex-col gap-y-1">
+                <label asp-for="Name_Farsi" class="text-sm text-zinc-700 flex">
+
+                </label>
+                <input asp-for="Name_Farsi" class="focus:shadow-primary-outline text-sm leading-5.6 block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all focus:border-blue-300 focus:outline-none">
+                <span asp-validation-for="Name_Farsi" class="text-red-600 "></span>
+            </div>
+            <div class="sm:w-1/2 flex flex-col gap-y-1">
+                <label asp-for="Name_English" class="text-sm text-zinc-700 flex">
+                </label>
+                <input asp-for="Name_English" class="focus:shadow-primary-outline text-sm leading-5.6 block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all focus:border-blue-300 focus:outline-none">
+                <span asp-validation-for="Name_English" class="text-red-600 "></span>
+            </div>
+        </div>
+        <div class="sm:flex gap-x-5 mt-5">
+            <div class="sm:w-1/2 mb-2 sm:mb-0 flex flex-col gap-y-1">
+                <label asp-for="Price" class="text-sm text-zinc-700 flex">
+                </label>
+                <input asp-for="Price" class="focus:shadow-primary-outline text-sm leading-5.6 block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all focus:border-blue-300 focus:outline-none">
+                <span asp-validation-for="Price" class="text-red-600 "></span>  
+            </div>
+            
+            <div class="sm:w-1/2 mb-2 sm:mb-0 flex flex-col gap-y-1">
+                <label class="text-sm text-zinc-700 flex">
+                    گروه محصول
+                </label>
+
+                <select asp-for="ProductGroupId" asp-items="@(ViewData["ProductGroupId"] as SelectList)" class="focus:shadow-primary-outline text-sm leading-5.6 ease block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-blue-500 focus:outline-none">
+                </select>
+            </div>
+        </div>
+        <div class="sm:flex gap-x-5 mt-5">
+
+
+
+                <div class="sm:w-1/2 mb-2 sm:mb-0 flex flex-col gap-y-1">
+                    <label asp-for="IsActive" class="text-sm text-zinc-700 flex">
+                    </label>
+                    <input asp-for="IsActive" type="checkbox">
+                </div>
+           
+            <div class="sm:w-1/2 flex gap-x-2 justify-center items-center pt-7 h-16">
+                <span class="w-auto text-sm text-zinc-700">
+                    عکس محصول
+                </span>
+                <label for="dropzone-file" class="w-8/12 sm:w-1/3 flex flex-col items-center justify-center border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                    <div class="flex flex-col items-center justify-center p-1">
+                        <svg class="w-6 h-6 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"></path>
+                        </svg>
+                    </div>
+                    <img src="/Upload/Product/@Model.pic" style="width:50px" />
+                    <input id="dropzone-file" name="Up" type="file" class="hidden" accept="image/*">
+                </label>
+            </div>
+        </div>
+    
+        <button type="submit" class="mx-auto w-1/3 px-2 py-3 mt-8 text-sm bg-blue-500 hover:bg-blue-400 transition text-gray-100 rounded-lg">
+            ثبت اطلاعات
+        </button>
+        <a asp-area="Admin" asp-action="Index" asp-controller="Products" class="mx-auto w-1/3 px-2 py-3 mt-8 text-sm bg-red-500 hover:bg-red-400 transition text-gray-100 rounded-lg">بازگشت</a>
+    </form>
+</div>
