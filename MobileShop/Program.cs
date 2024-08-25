@@ -19,6 +19,9 @@ builder.Services.AddScoped<IAboutsService, AboutsService>();
 builder.Services.AddScoped<ISocialNetworkService, SocialNetworkService>();
 builder.Services.AddScoped<IProducService, ProducService>();
 builder.Services.AddScoped<IProductGalleryService, ProductGalleryService>();
+builder.Services.AddScoped<IProductCommentService, ProductCommentService>();
+builder.Services.AddScoped<IProductFeatureService, ProductFeatureService>();
+builder.Services.AddScoped<IProductSpecificationService, ProductSpecificationService>();
 
 
 builder.Services.AddAuthentication(options =>

@@ -215,3 +215,6 @@ function closeEditAddress() {
   let showEditAddress = document.getElementById("showEditAddress");
   showEditAddress.classList.add("hidden");
 }
+
+/////////////////////////////////////////////// profile edit address modal
+

@@ -1,0 +1,156 @@
+﻿@model List<ProductComment>
+@{
+    int id = 1;
+}
+
+
+
+<div class="">
+    <div class="text-zinc-800 text-lg font-semibold mb-4">
+
+        <h3 class="text-gray-700">
+            <span>لیست کامنت:</span>
+            <span class="text-red-500"> @ViewBag.ProductName</span>
+        </h3>
+        <br />
+        <a asp-area="Admin"
+           asp-action="Index"
+           asp-controller="Products"
+           class="text-zinc-50 hover:text-zinc-100 transition bg-green-600 hover:bg-green-600 px-2 py-1 text-xs rounded-lg">بازگشت</a>
+
+    </div>
+    <table class="w-full">
+        <thead>
+            <tr class="border-y">
+                <th>
+                    <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400 py-3">
+                        R
+                    </p>
+                </th>
+                <th>
+                    <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400 py-3">
+                        عنوان
+                    </p>
+                </th>
+                <th>
+                    <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400">
+                        پیشنهاده شده / نشده
+                    </p>
+                </th>
+
+                <th>
+                    <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400">
+                        نام کاربر
+                    </p>
+                </th>
+
+                <th>
+                    <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400">
+                        تاریخ
+                    </p>
+                </th>
+                <th>
+                    <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400">
+                        تاییده ادمین
+                    </p>
+                </th>
+
+                <th>
+                    <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400 py-3">
+                        عملیات
+                    </p>
+                </th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr class="hover:bg-zinc-100 text-xs md:text-sm">
+                    <td class="px-3 py-4 border-b">
+                        <p class="text-zinc-700">
+                            @id
+                        </p>
+                    </td>
+
+                    <td class="p-3 border-b">
+                        <p class="text-zinc-700">
+                            @item.Title
+                        </p>
+                    </td>
+
+                    <td class="p-3 border-b">
+                        <p class="text-zinc-700">
+                            @if (item.CheckAdmin == true)
+                            {
+                                <span class="text-green-600">پیشنهاد شده</span>
+                            }
+                            else
+                            {
+                                <span class="text-red-500">پیشنهاد نشده</span>
+
+                            }
+
+                        </p>
+                    </td>
+
+                    <td class="p-3 border-b">
+                        <p class="text-zinc-700">
+                            @item.User.Name @item.User.Family
+                        </p>
+                    </td>
+
+                    <td class="p-3 border-b">
+                        <p class="text-zinc-700">
+                            @item.Date.ToShamsi()
+                        </p>
+                    </td>
+
+                    <td class="p-3 border-b">
+                        <p class="text-zinc-700">
+                            @if (item.CheckAdmin == true)
+                            {
+                                <a onclick="OnChangeEventIsFinaly(@item.ProductCommentId)" class="text-zinc-50 hover:text-zinc-100 transition bg-green-500 hover:bg-green-500 px-2 py-1 text-xs rounded-lg" style="cursor: pointer;">تایید</a>
+                            }
+                            else
+                            {
+                                <a onclick="OnChangeEventIsFinaly(@item.ProductCommentId)" class="text-zinc-50 hover:text-zinc-100 transition bg-red-500 hover:bg-red-500 px-2 py-1 text-xs rounded-lg" style="cursor: pointer;">رد تایید</a>
+                            }
+
+                        </p>
+                    </td>
+
+                    <td class="p-3 border-b">
+                        <a asp-area="Admin"
+                           asp-controller="ProductComments"
+                           asp-action="Details"
+                           asp-route-id="@item.ProductCommentId"
+                           class="text-zinc-50 hover:text-zinc-100 transition bg-red-500 hover:bg-red-500 px-2 py-1 text-xs rounded-lg">جزئیات</a>
+                    </td>
+                </tr>
+                id += 1;
+            }
+        </tbody>
+    </table>
+</div>
+
+@section Scripts {
+    <script src="/lib/jquery/dist/jquery.min.js"></script>
+    <script>
+        function OnChangeEventIsFinaly(id) {
+            let text = "برای تغییرات مطمئن هستید؟؟";
+            if (confirm(text) == true) {
+
+                $.ajax({
+                    url: "/Admin/ProductComments/ActiveDeActiveComment",
+                    type: "Get",
+                    data: { Pid: id }
+                }).done(function () {
+                    setTimeout(function () {
+                        window.location.reload();
+                    }, 1);
+                });
+            }
+        }
+    </script>
+}

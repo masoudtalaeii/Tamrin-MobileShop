@@ -33,39 +33,23 @@
                         عنوان
                     </p>
                 </th>
-               
+
                 <th>
                     <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400">
-                        قیمت 
+                        قیمت
                     </p>
                 </th>
 
                 <th>
                     <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400">
-                        وضعیت 
-                    </p>
-                </th>
-                 <th>
-                    <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400">
-                        گالری
+                        وضعیت
                     </p>
                 </th>
                 <th>
                     <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400">
-                        کامنت
+                        تنظیمات
                     </p>
                 </th>
-                <th>
-                    <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400">
-                        ویژگی ها
-                    </p>
-                </th>
-                <th>
-                    <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400">
-                        مشخصات ها
-                    </p>
-                </th>
-              
 
                 <th>
                     <p class="text-xs md:text-sm font-normal flex items-center text-zinc-400 py-3">
@@ -94,7 +78,7 @@
                             @item.Name_Farsi
                         </p>
                     </td>
-                 
+
                     <td class="p-3 border-b">
                         <p class="text-zinc-700">
                             @item.Price.ToToman()
@@ -121,42 +105,30 @@
                                asp-controller="ProductGallery"
                                asp-action="CreateGallery"
                                asp-route-id="@item.ProductId"
-                               class="text-zinc-50 hover:text-zinc-100 transition bg-red-500 hover:bg-red-500 px-2 py-1 text-xs rounded-lg">+</a>
-
-                        </p>
-                    </td>
-                    <td class="p-3 border-b">
-                        <p class="text-zinc-700">
+                               class="text-zinc-50 hover:text-zinc-100 transition bg-red-500 hover:bg-red-500 px-2 py-1 text-xs rounded-lg">گالری</a>
                             <a asp-area="Admin"
-                               asp-controller="Products"
-                               asp-action="Details"
+                               asp-controller="ProductComments"
+                               asp-action="AllCommnetById"
                                asp-route-id="@item.ProductId"
-                               class="text-zinc-50 hover:text-zinc-100 transition bg-red-500 hover:bg-red-500 px-2 py-1 text-xs rounded-lg">+</a>
-
-                        </p>
-                    </td>
-                    <td class="p-3 border-b">
-                        <p class="text-zinc-700">
+                               class="text-zinc-50 hover:text-zinc-100 transition bg-yellow-500 hover:bg-yellow-500 px-2 py-1 text-xs rounded-lg">کامنت</a>
                             <a asp-area="Admin"
-                               asp-controller="Products"
-                               asp-action="Details"
+                               asp-controller="ProductSpecifications"
+                               asp-action="AllSpecificationById"
                                asp-route-id="@item.ProductId"
-                               class="text-zinc-50 hover:text-zinc-100 transition bg-red-500 hover:bg-red-500 px-2 py-1 text-xs rounded-lg">+</a>
-
-                        </p>
-                    </td>
-                    <td class="p-3 border-b">
-                        <p class="text-zinc-700">
+                               class="text-zinc-50 hover:text-zinc-100 transition bg-green-500 hover:bg-green-500 px-2 py-1 text-xs rounded-lg">مشخصات</a>
                             <a asp-area="Admin"
-                               asp-controller="Products"
-                               asp-action="Details"
+                               asp-controller="ProductFeatures"
+                               asp-action="AllFeatureById"
                                asp-route-id="@item.ProductId"
-                               class="text-zinc-50 hover:text-zinc-100 transition bg-red-500 hover:bg-red-500 px-2 py-1 text-xs rounded-lg">+</a>
+                               class="text-zinc-50 hover:text-zinc-100 transition bg-blue-500 hover:bg-blue-500 px-2 py-1 text-xs rounded-lg">ویژگی</a>
+
+
 
                         </p>
                     </td>
 
-                   
+
+
                     <td class="p-3 border-b">
                         <a asp-area="Admin"
                            asp-controller="Products"

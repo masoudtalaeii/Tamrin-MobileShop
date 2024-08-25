@@ -8,9 +8,11 @@ namespace MobileShop.Areas.Admin.Controllers
     public class ProductGalleryController : BaseController
     {
         private readonly IProductGalleryService _productGalleryService;
-        public ProductGalleryController(IProductGalleryService productGalleryService)
+        private readonly IProducService _producService;
+        public ProductGalleryController(IProductGalleryService productGalleryService, IProducService producService)
         {
             _productGalleryService = productGalleryService;
+            _producService = producService;
         }
 
         public IActionResult CreateGallery(int id)
@@ -19,6 +21,7 @@ namespace MobileShop.Areas.Admin.Controllers
             {
                 ProductId = id,
             };
+            ViewBag.ProductName = _producService.GetById(id).Name_Farsi;
             return View(model);
         }
 
