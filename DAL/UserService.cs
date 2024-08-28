@@ -58,7 +58,10 @@ namespace DAL
         {
             return _db.Users.FirstOrDefault(l => l.UserName == username).UserId;
         }
-
-
+        public string GetFullNameByUserName(string username)
+        {
+            var find = _db.Users.FirstOrDefault(l => l.UserName == username);
+            return find.Name + " " + find.Family;
+        }
     }
 }

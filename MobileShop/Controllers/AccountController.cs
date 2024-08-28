@@ -71,12 +71,13 @@ namespace MobileShop.Controllers
                 return View(model);
             }
 
-
+            var fullName = user.Name + " " + user.Family;
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
                 new Claim(ClaimTypes.Role,user.Role.RoleTitle) ,
-                new Claim(ClaimTypes.Name, user.UserName)
+                new Claim(ClaimTypes.Name, user.UserName),
+                new Claim(ClaimTypes.GivenName,fullName)
             };
             var identity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
 

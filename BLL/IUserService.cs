@@ -20,5 +20,6 @@ namespace BLL
         public void EditUser(User user);
 
         public int GetUserIdByUserName(string username);
+        public string GetFullNameByUserName(string username);
     }
 }

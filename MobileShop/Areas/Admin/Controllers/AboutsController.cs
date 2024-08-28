@@ -15,6 +15,7 @@ namespace MobileShop.Areas.Admin.Controllers
         public ActionResult Index()
         {
             var list = _aboutsService.GetAll();
+            
             return View(list);
         }
 
@@ -26,6 +27,12 @@ namespace MobileShop.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
+            var list = _aboutsService.GetAll();
+            if (list.Count > 0)
+            {
+                return RedirectToAction("Edit", "Abouts", new { id = list.First().AboutUsId });
+
+            }
             return View();
         }
 

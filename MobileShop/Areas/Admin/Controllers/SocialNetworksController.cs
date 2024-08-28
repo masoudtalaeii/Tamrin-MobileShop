@@ -1,5 +1,6 @@
 ﻿using BE;
 using BLL;
+using DAL;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MobileShop.Areas.Admin.Controllers
@@ -26,6 +27,12 @@ namespace MobileShop.Areas.Admin.Controllers
 
         public ActionResult Create()
         {
+            var list = _socialNetworkService.GetAll();
+            if (list.Count > 0)
+            {
+                return RedirectToAction("Edit", "SocialNetworks", new { id = list.First().SocialNetworkId });
+
+            }
             return View();
         }
 

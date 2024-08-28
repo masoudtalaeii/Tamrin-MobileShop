@@ -1,0 +1,41 @@
+﻿@model Rules
+
+<div class="">
+    <div class="text-zinc-800 text-lg mb-4 font-semibold">
+        جزئیات قوانین و مقررات:
+    </div>
+    <!-- product -->
+    <div class="mt-7 flex flex-col md:flex-row border-b pb-4">
+
+        <div class="mr-2 md:mr-5 w-full">
+
+            <div class="text-xs sm:text-sm text-zinc-700">
+                <label class="text-yellow-500" asp-for="Title"></label><span class="text-yellow-500">:</span><br />
+                @Model.Title
+            </div>
+
+            <div class="text-xs sm:text-sm text-zinc-700">
+                <label class="text-yellow-500" asp-for="Description"></label><span class="text-yellow-500">:</span><br />
+                @Model.Description
+            </div>
+
+
+            <div class="text-xs sm:text-sm text-zinc-700">
+                <label class="text-yellow-500" asp-for="IsActive"></label><span class="text-yellow-500">:</span><br />
+                @if (Model.IsActive == true)
+                {
+                    <span>فعال</span>
+                }
+                else
+                {
+                    <span>غیر فعال</span>
+
+                }
+            </div>
+
+
+        </div>
+    </div>
+    <a asp-area="Admin" asp-action="Index" asp-controller="Rules" class="mx-auto w-1/3 px-2 py-3 mt-8 text-sm bg-red-500 hover:bg-red-400 transition text-gray-100 rounded-lg">بازگشت</a>
+
+</div>

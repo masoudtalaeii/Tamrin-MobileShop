@@ -22,6 +22,8 @@ builder.Services.AddScoped<IProductGalleryService, ProductGalleryService>();
 builder.Services.AddScoped<IProductCommentService, ProductCommentService>();
 builder.Services.AddScoped<IProductFeatureService, ProductFeatureService>();
 builder.Services.AddScoped<IProductSpecificationService, ProductSpecificationService>();
+builder.Services.AddScoped<IQuestionService, QuestionService>();
+builder.Services.AddScoped<IRulesService, RulesService>();
 
 
 builder.Services.AddAuthentication(options =>

@@ -3,12 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MobileShop.Areas.Users.Controllers
 {
-    
-    public class HomeController : BaseController
+    [Area("Users")]
+    [Authorize(Roles = "User")]
+    public class BaseController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
     }
 }

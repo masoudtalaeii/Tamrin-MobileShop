@@ -10,5 +10,7 @@ namespace BLL
         public Article GetById(int id);
 
         public void Edit(Article model);
+        public List<Article> GetAllForSite();
+        public List<Article> GetAllByGroupId(int id);
     }
 }

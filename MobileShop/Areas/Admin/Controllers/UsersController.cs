@@ -96,7 +96,7 @@ namespace MobileShop.Areas.Admin.Controllers
             model.Password = PasswordHelper.EncodePasswordMd5(model.Password);
 
             _userService.EditUser(model);
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Logout", "Account");
         }
     }
 }

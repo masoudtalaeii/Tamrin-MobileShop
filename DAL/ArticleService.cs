@@ -31,9 +31,25 @@ namespace DAL
             return _db.Articles.Include(x=>x.articleGroup).ToList();
         }
 
+        public List<Article> GetAllForSite()
+        {
+            return _db.Articles
+                .Include(x => x.articleGroup)
+                .Where(x=>x.IsActive)
+                .OrderByDescending(x=>x.ArticleId)
+                .ToList();
+        }
+
         public Article GetById(int id)
         {
             return _db.Articles.Include(x=>x.articleGroup).FirstOrDefault(u => u.ArticleId == id);
+        }
+
+        public List<Article> GetAllByGroupId(int id)
+        {
+            return _db.Articles
+                .Include(x => x.articleGroup)
+                .Where(u => u.ArticleGroupId == id && u.IsActive).ToList();
         }
     }
 }

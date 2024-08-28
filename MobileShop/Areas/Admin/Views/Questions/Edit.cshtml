@@ -1,0 +1,41 @@
+﻿@model Question
+
+<div class="flex justify-between items-center p-4 border-b">
+    <h3 class="text-gray-700">ویرایش کردن</h3>
+
+</div>
+
+<div>
+    <!-- inputs -->
+    <form asp-area="Admin" asp-controller="Questions" asp-action="Edit" method="post">
+        <input type="hidden" asp-for="QuestionId" />
+        <div class="sm:flex gap-x-5 mt-5">
+            <div class="sm:w-1/2 mb-2 sm:mb-0 flex flex-col gap-y-1">
+                <label asp-for="Title" class="text-sm text-zinc-700 flex">
+
+                </label>
+                <input asp-for="Title" class="focus:shadow-primary-outline text-sm leading-5.6 block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all focus:border-blue-300 focus:outline-none">
+                <span asp-validation-for="Title" class="text-red-600 "></span>
+            </div>
+            <div class="sm:w-1/2 flex flex-col gap-y-1">
+                <label asp-for="Description" class="text-sm text-zinc-700 flex">
+                </label>
+                <input asp-for="Description" class="focus:shadow-primary-outline text-sm leading-5.6 block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all focus:border-blue-300 focus:outline-none">
+                <span asp-validation-for="Description" class="text-red-600 "></span>
+            </div>
+        </div>
+        <div class="sm:flex gap-x-5 mt-5">
+
+            <div class="sm:w-1/2 mb-2 sm:mb-0 flex flex-col gap-y-1">
+                <label asp-for="IsActive" class="text-sm text-zinc-700 flex">
+                </label>
+                <input asp-for="IsActive" type="checkbox">
+            </div>
+        </div>
+
+        <button type="submit" class="mx-auto w-1/3 px-2 py-3 mt-8 text-sm bg-blue-500 hover:bg-blue-400 transition text-gray-100 rounded-lg">
+            ثبت اطلاعات
+        </button>
+        <a asp-area="Admin" asp-action="Index" asp-controller="Questions" class="mx-auto w-1/3 px-2 py-3 mt-8 text-sm bg-red-500 hover:bg-red-400 transition text-gray-100 rounded-lg">بازگشت</a>
+    </form>
+</div>

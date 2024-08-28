@@ -7,33 +7,81 @@ namespace MobileShop.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IAboutsService _aboutsService;
+        private readonly IQuestionService _questionService;
+        private readonly IRulesService _rulesService;
+        private readonly IArticleService _articleService;
+        public HomeController(IAboutsService aboutsService, IQuestionService questionService, IRulesService rulesService, IArticleService articleService)
         {
-            _logger = logger;
+            _aboutsService = aboutsService;
+            _questionService = questionService;
+            _rulesService = rulesService;
+            _articleService = articleService;
         }
-
 
         public IActionResult Index()
         {
             return View();
         }
 
-        public IActionResult Privacy()
+        [Route("about-us")]
+        public IActionResult Aboutus()
         {
-            return View();
+            var model = _aboutsService.GetAll();
+            return View(model);
         }
 
-        //public IActionResult Details(int id)
-        //{
-        //    ProductBLL pt = new ProductBLL();
-        //    var product = pt.readById(id);
+        [Route("contact-us")]
+        public IActionResult ContactUs()
+        {
+            
+            var model = _aboutsService.GetAll();
+            return View(model);
+        }
 
-        //    return View(product);
+        [Route("question")]
+        public IActionResult Question()
+        {
+
+            var model = _questionService.GetAllForSite();
+            return View(model);
+        }
+
+        [Route("rules")]
+        public IActionResult Rules()
+        {
+
+            var model = _rulesService.GetAllForSite();
+            return View(model);
+        }
+
+        [Route("blogs")]
+        public IActionResult blogs()
+        {
+
+            var model = _articleService.GetAllForSite();
+            return View(model);
+        }
+
+        [Route("/blog/{id}")]
+        public IActionResult blog(int id)
+        {
+
+            var model = _articleService.GetById(id);
+            model.SeeCount += 1;
+            _articleService.Edit(model);
+            return View(model);
+        }
+
+        [Route("/blogsByGroup/{id}")]
+        public IActionResult blogsByGroup(int id)
+        {
+
+            var model = _articleService.GetAllByGroupId(id);
+            return View(model);
+        }
 
 
-        //}
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

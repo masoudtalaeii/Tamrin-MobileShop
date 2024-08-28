@@ -30,6 +30,8 @@ namespace DAL
         public DbSet<ProductFeature> productFeatures { get; set; }
         public DbSet<ProductGallery> productGalleries { get; set; }
         public DbSet<ProductSpecification> productSpecifications { get; set; }
+        public DbSet<Question> Questions { get; set; }
+        public DbSet<Rules> Rules { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

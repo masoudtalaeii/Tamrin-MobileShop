@@ -1,0 +1,145 @@
+﻿@model List<Article>
+
+@inject IArticleGroupService _ArticleGroupService;
+@{
+
+    var groups = _ArticleGroupService.GetAll();
+    ViewData["Title"] = "مقالات";
+    int i = 1;
+}
+
+
+<!-- blog sldier -->
+<div class="mt-10 md:mb-7 px-3 bg-white py-4 mx-3 rounded-xl shadow-lg">
+    <!-- TOP SLIDER -->
+    <div class="flex justify-between items-center pb-3">
+        <div class="px-4 py-2 flex justify-center items-center gap-x-1 font-bold md:text-lg text-zinc-700 relative">
+            @if (Model.Any())
+            {
+                <span>
+                    مقالات براساس گروه:
+                </span>
+                <span class="text-red-500">@Model.First().articleGroup.Name</span>
+            }
+            else
+            {
+                <span>
+                    مقالات براساس گروه:
+                </span>
+            }
+            <div class="w-20 h-2 bg-blue-300 shadow-lg absolute right-5 top-5 rounded-sm">
+            </div>
+        </div>
+        <a asp-controller="Home" asp-action="blogs">
+            <div class="transition px-4 py-2 flex justify-center items-center text-zinc-700 hover:text-zinc-600">
+                مشاهده همه
+                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#292929" viewBox="0 0 256 256"><path d="M164.24,203.76a6,6,0,1,1-8.48,8.48l-80-80a6,6,0,0,1,0-8.48l80-80a6,6,0,0,1,8.48,8.48L88.49,128Z"></path></svg>
+            </div>
+        </a>
+    </div>
+    
+    <!-- SLIDER -->
+
+</div>
+<!-- blog Group -->
+<div class="py-5 px-3 lg:px-10 md:flex gap-x-5">
+    <div class="md:w-3/12">
+        <div class="px-2 sm:px-3 py-3 bg-white rounded-xl shadow-lg">
+            @if (groups.Any())
+            {
+                foreach (var item in groups)
+                {
+                    <button class="mx-auto flex gap-x-1 group items-center md:font-semibold md:text-lg text-right w-full px-2 py-3 text-sm hover:bg-blue-400 hover:text-white transition text-gray-700 rounded-lg">
+                        <svg class="group-hover:fill-white transition-colors" xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#3d3d3d" viewBox="0 0 256 256"><path d="M88,112a8,8,0,0,1,8-8h80a8,8,0,0,1,0,16H96A8,8,0,0,1,88,112Zm8,40h80a8,8,0,0,0,0-16H96a8,8,0,0,0,0,16ZM232,64V184a24,24,0,0,1-24,24H32A24,24,0,0,1,8,184.11V88a8,8,0,0,1,16,0v96a8,8,0,0,0,16,0V64A16,16,0,0,1,56,48H216A16,16,0,0,1,232,64Zm-16,0H56V184a23.84,23.84,0,0,1-1.37,8H208a8,8,0,0,0,8-8Z"></path></svg>
+                        <a asp-controller="Home" asp-action="blogsByGroup" asp-route-id="@item.ArticleGroupId">
+                            @item.Name
+                        </a>
+
+                    </button>
+                }
+            }
+            else
+            {
+                <div class="mb-10 mt-7">
+                    <partial name="_AlertNotRecord" />
+                </div>
+            }
+
+        </div>
+    </div>
+    <div class="md:w-9/12 mt-5 md:mt-0">
+        <!-- section blog -->
+        <div class="rounded-2xl mx-auto text-gray-100">
+            <!-- main blog -->
+            <div class="grid grid-cols-2 lg:grid-cols-3 gap-3">
+                @if (Model.Any())
+                {
+                    foreach (var item in Model)
+                    {
+                        <div class="bg-white rounded-2xl border border-zinc-300 group">
+                            <div class="image-box">
+                                <img class="rounded-2xl" src="/Upload/Article/@item.pic">
+                            </div>
+                            <div class="p-2 md:p-4 mt-2">
+                                <a asp-controller="Home" asp-action="blog" asp-route-id="@item.ArticleId" class="font-semibold text-zinc-800">
+                                    @item.Title
+                                </a>
+                                <div class="flex items-center justify-around mt-2">
+                                    <div class="text-xs text-zinc-500">
+                                        @item.date.ToStringShamsiDate()
+                                    </div>
+                                    <a asp-controller="Home" asp-action="blog" asp-route-id="@item.ArticleId" class="flex items-center justify-center gap-x-1 text-sm w-fit py-2 px-5 mr-auto rounded-lg text-white bg-blue-500 hover:bg-blue-400 transition">
+                                        ادامه خواندن
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="mb-10 mt-7">
+                        <div class="text-red-500 text-center text-lg font-semibold mt-2">
+                            مقاله ای یافت نشد!!
+                        </div>
+                    </div>
+                }
+            </div>
+            <!-- pager blog -->
+            @*  <div class="mb-10 mt-7">
+            <ul class="flex items-center justify-center gap-x-2 md:gap-x-3 h-8 text-sm">
+            <li>
+            <a href="#" class="flex items-center justify-center transition shadow-lg px-3 h-8 ms-0 text-gray-500 bg-white rounded-lg  hover:bg-blue-100 hover:text-blue-400">
+            <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 1 1 5l4 4"></path>
+            </svg>
+            </a>
+            </li>
+            <li>
+            <a href="#" class="flex items-center justify-center transition shadow-lg px-3 h-8 text-blue-500 bg-blue-200 rounded-lg hover:bg-blue-100">1</a>
+            </li>
+            <li>
+            <a href="#" class="flex items-center justify-center transition shadow-lg px-3 h-8 text-gray-500 bg-white rounded-lg hover:bg-blue-100 hover:text-blue-400">2</a>
+            </li>
+            <li>
+            <a href="#" class="flex items-center justify-center transition shadow-lg px-3 h-8 rounded-lg text-gray-500 bg-white  hover:bg-blue-100 hover:text-blue-400">3</a>
+            </li>
+            <li>
+            <a href="#" class="flex items-center justify-center transition shadow-lg px-3 h-8 text-gray-500 bg-white rounded-lg  hover:bg-blue-100 hover:text-blue-400">...</a>
+            </li>
+            <li>
+            <a href="#" class="flex items-center justify-center transition shadow-lg px-3 h-8 text-gray-500 bg-white rounded-lg  hover:bg-blue-100 hover:text-blue-400">8</a>
+            </li>
+            <li>
+            <a href="#" class="flex items-center justify-center transition shadow-lg px-3 h-8 text-gray-500 bg-white rounded-lg  hover:bg-blue-100 hover:text-blue-400">
+            <svg class="w-2.5 h-2.5 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"></path>
+            </svg>
+            </a>
+            </li>
+            </ul>
+            </div> *@
+        </div>
+    </div>
+
+</div>
